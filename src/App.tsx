@@ -5,7 +5,12 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import { withAuthenticator } from '@aws-amplify/ui-react'
+import SignUp from './pages/SignUp';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import ConfirmEmail from './pages/ConfirmMail';
+import PrivateRoute from './components/PrivateRoute';
+import MyPage from './pages/MyPage';
 
 const App: React.FC = () => {
   return (
@@ -17,10 +22,19 @@ const App: React.FC = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/login">Login</Link>
             </li>
             <li>
               <Link to="/users">Users</Link>
+            </li>
+            <li>
+              <Link to="/signup">SignUp</Link>
+            </li>
+            <li>
+              <Link to="/confirm-email">ConfirmEmail</Link>
+            </li>
+            <li>
+              <Link to="/mypage">MyPage</Link>
             </li>
           </ul>
         </nav>
@@ -28,12 +42,20 @@ const App: React.FC = () => {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/about">
-            <About />
+          <Route path="/login">
+            <Login />
           </Route>
+          <PrivateRoute path="/mypage" comp={MyPage}>
+          </PrivateRoute>
           <Route path="/users">
-            <Users />
+            <SignUp />
           </Route>
+          <Route path="/signup">
+            <SignUp />
+          </Route>
+          <Route path="/confirm-email">
+            <ConfirmEmail />
+          </Route>         
           <Route path="/">
             <Home />
           </Route>
@@ -43,17 +65,4 @@ const App: React.FC = () => {
   );
 }
 
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
-}
-
-
-export default withAuthenticator(App);
+export default App;
