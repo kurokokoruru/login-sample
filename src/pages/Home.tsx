@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import SignOutButton from '../components/SignOutButton';
 import { withAuthenticator } from '@aws-amplify/ui-react'
+import {AmplifyAuthenticator, AmplifySignIn} from "@aws-amplify/ui-react";
 // import { Auth } from 'aws-amplify';
 import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components';
+import { withCustomAuthenticator } from '../hoc/withCustomAuthenticator';
 // import { CognitoUser } from 'amazon-cognito-identity-js';
 
 const Home: React.FC = () => {
@@ -41,4 +43,4 @@ const Home: React.FC = () => {
 //     return user;
 // }
 
-export default withAuthenticator(Home);
+export default withCustomAuthenticator(Home, { usernameAlias:"email" });
