@@ -53,7 +53,6 @@ export const confirmSignUp = async (email: string, code: string) => {
     return result;
 }
 
-
 // export const verifyCurrentUserAttributeSubmit = async (varificationCode: string) => {
 //     let result = Auth.verifyCurrentUserAttributeSubmit('email', varificationCode);
 //     console.log(result);

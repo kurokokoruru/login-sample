@@ -10,6 +10,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import ConfirmEmail from './pages/ConfirmMail';
 import PrivateRoute from './components/PrivateRoute';
+import UpdateEmail from './pages/UpdateEmail';
 import MyPage from './pages/MyPage';
 
 const App: React.FC = () => {
@@ -36,6 +37,10 @@ const App: React.FC = () => {
             <li>
               <Link to="/mypage">MyPage</Link>
             </li>
+            <li>
+              <Link to="/updatemail">メールアドレス更新</Link>
+            </li>
+            
           </ul>
         </nav>
 
@@ -44,6 +49,9 @@ const App: React.FC = () => {
         <Switch>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/updatemail">
+            <UpdateEmail />
           </Route>
           <PrivateRoute path="/mypage" comp={MyPage}>
           </PrivateRoute>
