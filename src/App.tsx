@@ -5,6 +5,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { withAuthenticator } from '@aws-amplify/ui-react'
 
 const App: React.FC = () => {
   return (
@@ -55,4 +56,4 @@ function Users() {
 }
 
 
-export default App;
+export default withAuthenticator(App);
