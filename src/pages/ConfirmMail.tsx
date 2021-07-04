@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { confirmSignUp } from '../utils/auth-utils';
+import { AmplifyAuthenticator, AmplifyConfirmSignUp } from "@aws-amplify/ui-react";
 
 const ConfirmEmail: React.FC = () => {
 
@@ -23,13 +24,20 @@ const ConfirmEmail: React.FC = () => {
                     <div className="py-4 px-8">
                         <div className="mb-4">
                             <label htmlFor="code" className="block text-gray-600 text-sm font-bold mb-2">認証コード</label>
-                            <input type="text" name="code" placeholder="####" value={code} onChange={handleChange}/>
+                            <input type="text" name="code" placeholder="####" value={code} onChange={handleChange} />
                         </div>
                     </div>
                     <div className="mb-8">
                         <button className="mb-4 mx-16 rounded-full py-1 px-24 bg-gray-300" onClick={handleClick}>送信</button>
                     </div>
                 </div>
+                <AmplifyAuthenticator>
+                    <AmplifyConfirmSignUp
+                        headerText="My Custom Confirm Sign Up Text"
+                        slot="confirm-sign-up"
+                    ></AmplifyConfirmSignUp>
+                </AmplifyAuthenticator>
+
             </div>
         </div>
     )

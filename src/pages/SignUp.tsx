@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { signUp } from '../utils/auth-utils';
+import { AmplifyAuthenticator, AmplifySignUp } from "@aws-amplify/ui-react";
 
 const SignUp: React.FC = () => {
 
@@ -23,13 +24,19 @@ const SignUp: React.FC = () => {
                     <div className="py-4 px-8">
                         <div className="mb-4">
                             <label htmlFor="email" className="block text-gray-600 text-sm font-bold mb-2">メールアドレス</label>
-                            <input type="text" name="email" placeholder="office@testtest.co.jp" value={email} onChange={handleChange}/>
+                            <input type="text" name="email" placeholder="office@testtest.co.jp" value={email} onChange={handleChange} />
                         </div>
                     </div>
                     <div className="mb-8">
                         <button className="mb-4 mx-16 rounded-full py-1 px-24 bg-gray-300" onClick={handleClick}>作成</button>
                     </div>
                 </div>
+                <AmplifyAuthenticator>
+                    <AmplifySignUp
+                        headerText="My Custom Sign Up Text"
+                        slot="sign-up"
+                    ></AmplifySignUp>
+                </AmplifyAuthenticator>
             </div>
         </div>
     )
